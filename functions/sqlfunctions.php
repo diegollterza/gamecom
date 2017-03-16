@@ -30,4 +30,42 @@
 	}
 
 
+	function listOffers($filterName, $filterLowestPrice, $filterHighestPrice){
+		$sql = "SELECT * from offers";
+		if($filterName == true){
+			$sql = $sql . " WHERE name == '" . $filterName . "'";
+			if($filterLowestPrice == true){
+				$sql = $sql . " AND price > '" . $filterLowestPrice . "'";
+			}
+			if($filterHighestPrice == true){
+				$sql = " AND price < '" . $filterHighestPrice . "'";
+			}
+			$offer = $conn->query($sql);
+			if ($offer == true){
+				return $offer;
+			} 
+		}
+
+		if($filterLowestPrice == true){
+			$sql = $sql . " WHERE price > '" . $filterLowestPrice . "'";
+
+			if($filterHighestPrice == true){
+				$sql = $sql . " AND price < '" . $filterHighestPrice . "'";
+			}
+			$offer = $conn->query($sql);
+			if ($offer == true){
+				return $offer;
+			} 
+		}
+
+		if($filterHighestPrice == true){
+			$sql = $sql . " WHERE price < '" . $filterHighestPrice . "'";
+		}
+		
+		$offer = $conn->query($sql);
+			if ($offer == true){
+				return $offer;
+			} 
+
+	}
 ?>

@@ -1,9 +1,17 @@
+CREATE TABLE users{
+	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
+	password VARCHAR(20) NOT NULL,
+	email VARCHAR(100) NOT NULL
+}
+
+
 CREATE TABLE offers{
 	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR[55] NOT NULL,
-	description VARCHAR[255],
-	price INT(6) UNSIGNED,
+	description TEXT[255],
+	price FLOAT(7,2) UNSIGNED,
 	ownerid INT(6),
-	views int(6) UNSIGNED,
+	views INT(6) UNSIGNED,
 	FOREIGN KEY (ownerid) REFERENCES users(id)
 }
